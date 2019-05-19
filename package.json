@@ -24,6 +24,5 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
     "serialize-javascript": "1.7.0"
-  },
-  "proxy": "http://localhost:4000"
+  }
 }
