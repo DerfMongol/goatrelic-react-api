@@ -12,3 +12,5 @@ module.exports = {
         cookieKey: 'I like kdlskjdsk babies'
     }
 }
+
+console.log('test')
