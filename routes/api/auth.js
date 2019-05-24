@@ -10,7 +10,7 @@ router.get('/login', (req, res) => {
 router.get('/logout', (req, res) => {
     // handle with passport
     req.logout()
-    res.redirect('/')
+    res.redirect('back')
 })
 
 // auth with google
@@ -23,7 +23,12 @@ router.get(
     '/google/redirect',
     passport.authenticate('google'),
     (req, res) => {
-        res.redirect('back')
+        if (req.get('Referrer')) {
+            res.redirect('back')
+        } else {
+            res.redirect('http://localhost:3000')
+        }
+        
     })
 
 module.exports = router

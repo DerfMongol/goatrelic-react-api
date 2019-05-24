@@ -11,7 +11,10 @@ mongoose.connect(keys.mongodb.usersURI, {useNewUrlParser: true}, () => {
 const userSchema = new Schema({
     username: String,
     googleId: String,
-    thumbnail: String
+    thumbnail: String,
+    nba: [String],
+    nhl: [String],
+    pga: [String]
 })
 
 const User = mongoose.model("user", userSchema)

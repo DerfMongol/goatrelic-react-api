@@ -14,4 +14,8 @@ router.get('/', authCheck, (req,res) => {
     res.send(req.user)
 })
 
+router.post('/', (req, res) => {
+    console.log(req.body)
+})
+
 module.exports = router
