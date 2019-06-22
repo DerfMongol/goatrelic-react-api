@@ -4,7 +4,8 @@ const keys = require('../config/keys')
 const Schema = mongoose.Schema;
 
 const options = {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify: false 
 }
 
 const CriticConn = mongoose.createConnection(keys.mongodb.criticsURI, options)

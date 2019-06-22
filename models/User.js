@@ -3,10 +3,12 @@ const Schema = mongoose.Schema
 
 const keys = require('../config/keys')
 
-mongoose.connect(keys.mongodb.usersURI, {useNewUrlParser: true}, () => {
-    console.log('connected to mongodb')
-})
+const options = {
+    useNewUrlParser: true,
+    useFindAndModify: false 
+}
 
+const UserConn = mongoose.createConnection(keys.mongodb.usersURI, options)
 
 const userSchema = new Schema({
     username: String,
@@ -17,6 +19,6 @@ const userSchema = new Schema({
     pga: [String]
 })
 
-const User = mongoose.model("user", userSchema)
+const User = UserConn.model("user", userSchema)
 
 module.exports = User

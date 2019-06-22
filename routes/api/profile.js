@@ -22,25 +22,27 @@ router.post('/', (req, res) => {
 
         Object.keys(Fans).forEach((sports) => {
             Fans[sports].findOne({ googleId: req.user.googleId }).then(fanUser => {
-                if (fanUser) {
-                    fanUser.players = req.body[sports.toLocaleLowerCase()]
-                    
-                } else {
-                    const newFan = new Fans[sports]({
-                        name: currentUser.username,
-                        googleId: req.user.googleId,
-                        pic: currentUser.thumbnail,
-                        date: new Date().toLocaleDateString(),
-                        players: req.body[sports.toLocaleLowerCase()]
-                    })
-                    newFan.save()
+                console.log(req.body)
+                if (JSON.stringify(req.user[sports.toLocaleLowerCase()]) !== JSON.stringify(req.body[sports.toLocaleLowerCase()]) && req.body[sports.toLocaleLowerCase()].length > 0) {
+                    console.log(fanUser)
+                    if (fanUser) {
+                        fanUser.players = req.body[sports.toLocaleLowerCase()]
+                        fanUser.save()
+                    } else {
+                        const newFan = new Fans[sports]({
+                            name: currentUser.username,
+                            googleId: req.user.googleId,
+                            pic: currentUser.thumbnail,
+                            date: new Date().toLocaleDateString(),
+                            players: req.body[sports.toLocaleLowerCase()]
+                        })
+                        newFan.save().then(newfan => res.json(newfan))
+                    }
                 }
-                fanUser.save()
-
             })
             currentUser[sports.toLocaleLowerCase()] = req.body[sports.toLocaleLowerCase()]
         })
-        
+
         currentUser.save().then(currentUser => res.json(currentUser))
     })
 

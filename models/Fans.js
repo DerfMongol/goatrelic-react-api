@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const keys = require('../config/keys')
 
 const options = {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify: false 
 }
 
 const FansConn = mongoose.createConnection(keys.mongodb.fansURI, options)
