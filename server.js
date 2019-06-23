@@ -13,6 +13,7 @@ const auth = require('./routes/api/auth')
 const profile = require('./routes/api/profile')
 const users = require('./routes/api/users')
 const fans = require('./routes/api/fans')
+const fansAllTime = require('./routes/api/fansAllTime')
 
 const app = express()
 
@@ -40,6 +41,7 @@ app.use('/allTime', allTime)
 app.use('/profile', profile)
 app.use('/users', users)
 app.use('/fans', fans)
+app.use('/fansAllTime', fansAllTime)
 
 app.get('/', (req, res) => {
     res.render('home', { user: req.user})
