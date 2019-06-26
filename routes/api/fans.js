@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Fans = require('../../models/Fans')
 const User = require('../../models/User')
+const FansAllTime = require('../../models/FansAllTime')
 
 router.get('/nba', (req, res) => {
     Fans.Nba.find()
