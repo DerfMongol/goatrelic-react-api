@@ -14,6 +14,8 @@ const profile = require('./routes/api/profile')
 const users = require('./routes/api/users')
 const fans = require('./routes/api/fans')
 const fansAllTime = require('./routes/api/fansAllTime')
+const players = require('./routes/api/players')
+const playersAllTime = require('./routes/api/playersAllTime')
 
 const app = express()
 
@@ -42,6 +44,8 @@ app.use('/profile', profile)
 app.use('/users', users)
 app.use('/fans', fans)
 app.use('/fansAllTime', fansAllTime)
+app.use('/players', players)
+app.use('/playersAlltime', playersAllTime)
 
 app.get('/', (req, res) => {
     res.render('home', { user: req.user})
