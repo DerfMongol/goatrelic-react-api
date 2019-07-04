@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const cookieSession = require('cookie-session')
+const session = require('express-session')
 const passport = require('passport')
 
 const passportSetup = require('./config/passport-setup')
@@ -19,17 +19,14 @@ const playersAllTime = require('./routes/api/playersAllTime')
 
 const app = express()
 
-app.use(cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.cookieKey]
-}))
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cors({
-    methods:['GET','POST'],
-    credentials: true 
-  }))
+app.use(cors())
+
+app.use(session({secret: [keys.session.cookieKey] }))
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 // Set up view engine
 app.set('view engine', 'ejs')
@@ -37,8 +34,7 @@ app.set('view engine', 'ejs')
 
 
 //Initialze passport
-app.use(passport.initialize())
-app.use(passport.session())
+
 
 const port = process.env.PORT || 3001
 
