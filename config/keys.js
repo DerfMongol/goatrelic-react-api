@@ -1,8 +1,7 @@
-const Secret = require('./secret')
-
 let config = {}
 
 if (process.env.NODE_ENV == 'development') {
+    const Secret = require('./secret')
     config = Secret
 } else if (process.env.NODE_ENV == 'production') {
     config = {
