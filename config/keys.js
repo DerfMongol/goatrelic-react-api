@@ -1,6 +1,4 @@
-const aws = require('aws-sdk');
-
-module.exports = new aws({
+module.exports = {
     google: {
         clientID: process.env.GOOGLE_ID,
         clientSecret: process.env.GOOGLE_SECRET
@@ -14,6 +12,6 @@ module.exports = new aws({
     session: {
         cookieKey: process.env.COOKIE_KEY
     }
-})
+}
 
-console.log(process.env.GOOGLE_ID)
+console.log('test')
