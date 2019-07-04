@@ -20,6 +20,6 @@ module.exports = (goatJudges) => {
                 })
     
             })
-            allTime.sort((a, b) =>  a.avg- b.avg);
+            allTime.sort((a, b) =>  a.avg - b.avg || b.lists - a.lists);
             return allTime
     }
