@@ -15,7 +15,7 @@ const authCheck = (req, res, next) => {
 }
 
 router.get('/', authCheck, (req, res) => {
-    res.send(req.user)
+    res.json(req.user)
 })
 
 router.post('/', (req, res) => {
