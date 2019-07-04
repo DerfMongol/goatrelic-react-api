@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const session = require('express-session')
+const cookieSession = require('cookie-session')
 const passport = require('passport')
 
 const passportSetup = require('./config/passport-setup')
@@ -23,7 +23,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
-app.use(session({secret: [keys.session.cookieKey] }))
+app.use(cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieKey]
+}))
 app.use(passport.initialize())
 app.use(passport.session())
 
