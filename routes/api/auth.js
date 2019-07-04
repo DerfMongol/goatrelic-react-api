@@ -27,7 +27,7 @@ router.get(
         if (req.get('Referrer')) {
             res.redirect('back')
         } else {
-            res.redirect(`http://localhost/${process.env.PORT}`)
+            res.redirect(`http://localhost:${process.env.PORT}`)
         }
         
     })
