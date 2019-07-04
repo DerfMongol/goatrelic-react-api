@@ -21,7 +21,10 @@ const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cors());
+app.use(cors({
+    methods:['GET','POST'],
+    credentials: true 
+  }))
 
 // Set up view engine
 app.set('view engine', 'ejs')
