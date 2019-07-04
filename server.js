@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors());
 
-const port = 3001
+const port = process.env.PORT || 3001
 
 app.use('/auth', auth)
 app.use('/critics', critic)
