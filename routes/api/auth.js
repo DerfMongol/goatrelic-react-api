@@ -15,7 +15,7 @@ router.get('/logout', (req, res) => {
 
 // auth with google
 router.get('/google', passport.authenticate('google', {
-    scope: ['profile']
+    scope: ['https://www.googleapis.com/auth/userinfo.profile']
 }))
 
 // callback route for google to redirect to 
@@ -27,7 +27,7 @@ router.get(
         if (req.get('Referrer')) {
             res.redirect('back')
         } else {
-            res.redirect(`http://localhost:${process.env.PORT}`)
+            res.redirect('https://goatrelic.herokuapp.com')
         }
         
     })
