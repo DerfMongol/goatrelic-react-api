@@ -19,6 +19,10 @@ const playersAllTime = require('./routes/api/playersAllTime')
 
 const app = express()
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cors());
+
 // Set up view engine
 app.set('view engine', 'ejs')
 
@@ -30,10 +34,6 @@ app.use(cookieSession({
 //Initialze passport
 app.use(passport.initialize())
 app.use(passport.session())
-
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.use(cors());
 
 const port = process.env.PORT || 3001
 
