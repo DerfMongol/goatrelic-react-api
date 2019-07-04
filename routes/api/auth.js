@@ -15,7 +15,7 @@ router.get('/logout', (req, res) => {
 
 // auth with google
 router.get('/google', passport.authenticate('google', {
-    scope: ['https://www.googleapis.com/auth/userinfo.profile']
+    scope: ['profile']
 }))
 
 // callback route for google to redirect to 
@@ -23,7 +23,6 @@ router.get(
     '/google/redirect',
     passport.authenticate('google'),
     (req, res) => {
-        console.log(req.user)
         if (req.get('Referrer')) {
             res.redirect('back')
         } else {
