@@ -1,6 +1,6 @@
-require('dotenv').config();
+const aws = require('aws-sdk');
 
-module.exports = {
+module.exports = new aws({
     google: {
         clientID: process.env.GOOGLE_ID,
         clientSecret: process.env.GOOGLE_SECRET
@@ -14,6 +14,6 @@ module.exports = {
     session: {
         cookieKey: process.env.COOKIE_KEY
     }
-}
+})
 
 console.log(process.env.GOOGLE_ID)
