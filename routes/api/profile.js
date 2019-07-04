@@ -5,7 +5,7 @@ const Fans = require('../../models/Fans')
 
 const authCheck = (req, res, next) => {
     console.log(`authCheck: ${req}`)
-    if (!req.user) {
+    if (!req.body.user) {
         // if user is not logged in
         res.send(null)
     } else {
@@ -15,7 +15,7 @@ const authCheck = (req, res, next) => {
 }
 
 router.get('/', authCheck, (req, res) => {
-    res.json(req.user)
+    res.send(req.body.user)
 })
 
 router.post('/', (req, res) => {
