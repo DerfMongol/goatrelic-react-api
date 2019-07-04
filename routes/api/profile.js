@@ -4,7 +4,7 @@ const User = require('../../models/User')
 const Fans = require('../../models/Fans')
 
 const authCheck = (req, res, next) => {
-    console.log(`authCheck: ${JSON.stringify(req)}`)
+    console.log(`authCheck: ${JSON.parse(req)}`)
     if (!req.body.user) {
         // if user is not logged in
         res.send(null)
