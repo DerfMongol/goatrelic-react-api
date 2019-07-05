@@ -26,13 +26,12 @@ app.use(cors())
 app.use(cookieSession({
     name: 'session',
     keys: [keys.session.cookieKey],
-    cookie: {
-        secure: true,
-        httpOnly: true,
-        domain: 'goatrelic.herokuapp.com',
-        path: '/',
-        maxAge: 24 * 60 * 60 * 1000
-    }}))
+    secure: true,
+    httpOnly: true,
+    domain: 'goatrelic.herokuapp.com',
+    path: '/',
+    maxAge: 24 * 60 * 60 * 1000
+}))
 app.use(passport.initialize())
 app.use(passport.session())
 
