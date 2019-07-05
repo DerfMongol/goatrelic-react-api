@@ -4,9 +4,9 @@ const User = require('../../models/User')
 const Fans = require('../../models/Fans')
 
 const authCheck = (req, res, next) => {
-    if (!req.body.user) {
+    if (!req.user) {
         // if user is not logged in
-        res.send(req)
+        res.send(null)
     } else {
         // if logged in 
         next()
@@ -14,7 +14,7 @@ const authCheck = (req, res, next) => {
 }
 
 router.get('/', authCheck, (req, res) => {
-    res.send(req.body.user)
+    res.send(req.user)
 })
 
 router.post('/', (req, res) => {
