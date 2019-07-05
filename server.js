@@ -30,7 +30,7 @@ app.use(cookieSession({
         secure: true,
         httpOnly: true,
         domain: 'goatrelic.herokuapp.com',
-        path: '/profile',
+        path: '/',
         maxAge: 24 * 60 * 60 * 1000
     }}))
 app.use(passport.initialize())
