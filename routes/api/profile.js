@@ -5,7 +5,6 @@ const User = require('../../models/User')
 const Fans = require('../../models/Fans')
 
 const authCheck = (req, res, next) => {
-    passport.authenticate('local', { session: true }),
     console.log(`AuthCheck: ${req.user}`)
     if (!req.user) {
         // if user is not logged in
