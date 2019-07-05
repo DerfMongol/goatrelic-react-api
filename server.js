@@ -24,10 +24,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
 app.use(cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
+    name: 'session',
     keys: [keys.session.cookieKey],
-    secure: true
-}))
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        domain: 'goatrelic.herokuapp.com',
+        path: '/profile',
+        maxAge: 24 * 60 * 60 * 1000
+    }}))
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -53,7 +58,7 @@ app.use('/players', players)
 app.use('/playersAlltime', playersAllTime)
 
 app.get('/', (req, res) => {
-    res.render('home', { user: req.user})
+    res.render('home', { user: req.user })
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
