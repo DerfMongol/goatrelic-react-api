@@ -23,6 +23,8 @@ router.get(
     '/google/redirect',
     passport.authenticate('google'),
     (req, res) => {
+        console.log(`Redirect: ${req.session}`)
+
         if (req.get('Referrer')) {
             res.redirect('back')
         } else {

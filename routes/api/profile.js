@@ -5,7 +5,7 @@ const User = require('../../models/User')
 const Fans = require('../../models/Fans')
 
 const authCheck = (req, res, next) => {
-    console.log(`AuthCheck: ${req.user}`)
+    console.log(`AuthCheck: ${req.session}`)
     if (!req.user) {
         // if user is not logged in
         res.send(null)

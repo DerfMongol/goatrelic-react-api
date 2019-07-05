@@ -5,14 +5,11 @@ const User = require('../models/User')
 const Fans = require('../models/Fans')
 
 passport.serializeUser((user, done) => {
-    console.log(`Serialize: ${user}`)
     done(null, user.id)
 })
 
 passport.deserializeUser((id, done) => {
-
     User.findById(id).then((user) => {
-        console.log(`Deserialize: ${user}`)
         done(null, user)
     })
 })
