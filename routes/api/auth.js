@@ -26,7 +26,7 @@ router.get(
         if (req.get('Referrer')) {
             res.redirect('back')
         } else {
-            res.redirect('http://goatrelic.herokuapp.com')
+            res.redirect('https://goatrelic.herokuapp.com')
         }
         
     })
