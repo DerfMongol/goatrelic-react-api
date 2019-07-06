@@ -23,16 +23,16 @@ router.get(
     '/google/redirect',
     passport.authenticate('google'),
     (req, res) => {
-        req.session.save((err) => {
-            if (req.get('Referrer')) {
-                res.redirect('back')
-            } else {
-                res.redirect('http://goatrelic.herokuapp.com')
-            }
-        })
 
-        
-        
+        if (req.get('Referrer')) {
+            res.redirect('back')
+        } else {
+            res.redirect('http://goatrelic.herokuapp.com')
+        }
+
+
+
+
     })
 
 module.exports = router
