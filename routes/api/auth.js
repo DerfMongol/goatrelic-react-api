@@ -28,7 +28,6 @@ router.get(
         if (req.get('Referrer')) {
             res.redirect('back')
         } else {
-            res.send(req.user)
             res.redirect('https://goatrelic.herokuapp.com')
         }
 
