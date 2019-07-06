@@ -28,7 +28,7 @@ router.get(
             res.redirect('back')
         } else {
             res.json(req.user)
-            res.redirect('http://goatrelic.herokuapp.com')
+            res.redirect('https://goatrelic.herokuapp.com')
         }
 
 
