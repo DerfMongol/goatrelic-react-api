@@ -24,7 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
 app.use(cookieSession({
-    name: 'session',
     keys: [keys.session.cookieKey],
     maxAge: 24 * 60 * 60 * 1000
 }))
