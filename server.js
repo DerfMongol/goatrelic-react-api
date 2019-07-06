@@ -28,11 +28,11 @@ var expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
 app.use(cookieSession({
     name: 'session',
     keys: [keys.session.cookieKey],
-    secure: true,
+    secure: false,
     httpOnly: true,
     domain: 'goatrelic.herokuapp.com',
     path: '/',
-    expires: expiryDate
+    maxAge: 24 * 60 * 60 * 1000
 }))
 app.use(passport.initialize())
 app.use(passport.session())
