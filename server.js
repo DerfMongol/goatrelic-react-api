@@ -23,15 +23,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
-var expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 hour
-
 app.use(cookieSession({
     name: 'session',
     keys: [keys.session.cookieKey],
-    secure: false,
-    httpOnly: true,
-    domain: 'goatrelic.herokuapp.com',
-    path: '/',
     maxAge: 24 * 60 * 60 * 1000
 }))
 app.use(passport.initialize())
