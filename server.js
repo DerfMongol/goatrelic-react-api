@@ -42,6 +42,18 @@ app.set('view engine', 'ejs')
 const port = process.env.PORT || 3001
 
 app.use('/auth', auth)
+app.get(
+    '/api/auth/google/redirect',
+    passport.authenticate('google'),
+    (req, res) => {
+        console.log(`redirect: ${req.user}`)
+
+        if (req.get('Referrer')) {
+            res.redirect('back')
+        } else {
+            res.redirect('http://goatrelic.herokuapp.com')
+        }
+    })
 app.use('/critics', critic)
 app.use('/allTime', allTime)
 app.use('/profile', profile)
