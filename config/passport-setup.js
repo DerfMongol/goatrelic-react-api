@@ -26,10 +26,9 @@ passport.use(
         clientSecret: keys.google.clientSecret, 
         proxy: true
     }, (accessToken, refreshToken, profile, done) => {
-        User.findOne({ googleId: profile.id }).then((currentUser) => {
+        User.findOneAndUpdate({ googleId: profile.id }, {thumbnail: profile._json.picture}).then((currentUser) => {
             if (currentUser) {
                 console.log(`verify: ${currentUser}`)
-                currentUser.thumbnail = profile._json.picture
                 done(null, currentUser)
             } else {
                 new User({
