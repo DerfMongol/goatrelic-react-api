@@ -1,39 +1,48 @@
-const router = require('express').Router()
 const passport = require('passport')
 
-// auth login
-router.get('/login', (req, res) => {
-    res.render('login', { user: req.user })
-})
+module.exports = app => {
+    app.get('/auth/google', passport.authenticate('google', {
+        scope: ['profile']
+    }))
 
-// auth logout
-router.get('/logout', (req, res) => {
-    // handle with passport
-    req.logout()
-    res.redirect('back')
-})
+    app.get(
+        '/auth/google/redirect',
+        passport.authenticate('google'),
+        (req, res) => {
+            console.log(`redirect: ${req.user}`)
 
-// auth with google
-router.get('/google', passport.authenticate('google', {
-    scope: ['profile']
-}))
+            if (req.get('Referrer')) {
+                res.redirect('back')
+            } else {
+                res.redirect('http://goatrelic.herokuapp.com')
+            }
+        })
 
-// callback route for google to redirect to 
-router.get(
-    '/google/redirect',
-    passport.authenticate('google'),
-    (req, res) => {
-        console.log(`redirect: ${req.user}`)
+    app.get(
+        '/api/auth/google/callback',
+        passport.authenticate('google'),
+        (req, res) => {
+            console.log(`redirect: ${req.user}`)
 
-        if (req.get('Referrer')) {
-            res.redirect('back')
-        } else {
-            res.redirect('http://goatrelic.herokuapp.com')
+            if (req.get('Referrer')) {
+                res.redirect('back')
+            } else {
+                res.redirect('http://goatrelic.herokuapp.com')
+            }
+        
         }
+    )
 
-
-
-
+    app.get('/auth/login', (req, res) => {
+        res.render('login', { user: req.user })
     })
-    
-module.exports = router
+
+    app.get('/auth/logout', (req, res) => {
+        req.logout()
+        res.redirect('back')
+    })
+
+    app.get('/current_user', (req, res) => {
+        res.send(req.user);
+    })
+};

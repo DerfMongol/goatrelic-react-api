@@ -30,18 +30,13 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 // Set up view engine
 app.set('view engine', 'ejs')
 
-
-
-//Initialze passport
-
-
 const port = process.env.PORT || 3001
 
-app.use('/api/auth' || '/auth', auth)
+require('./routes/api/auth')(app);
+
 app.use('/critics', critic)
 app.use('/allTime', allTime)
 app.use('/profile', profile)
