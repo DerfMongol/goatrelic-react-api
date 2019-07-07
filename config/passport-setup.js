@@ -29,6 +29,7 @@ passport.use(
         User.findOne({ googleId: profile.id }).then((currentUser) => {
             if (currentUser) {
                 console.log(`verify: ${currentUser}`)
+                currentUser.thumbnail = profile._json.picture
                 done(null, currentUser)
             } else {
                 new User({
