@@ -21,9 +21,7 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cors({
-    credentials: true
-}))
+app.use(cors())
 
 app.use(cookieSession({
     keys: [keys.session.cookieKey],

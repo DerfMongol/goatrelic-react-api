@@ -21,9 +21,10 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new GoogleStrategy({
         // options for the google strategy
-        callbackURL: '/auth/google/redirect',
+        callbackURL: '/api/auth/google/redirect',
         clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret
+        clientSecret: keys.google.clientSecret, 
+        proxy: true
     }, (accessToken, refreshToken, profile, done) => {
         User.findOne({ googleId: profile.id }).then((currentUser) => {
             if (currentUser) {
