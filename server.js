@@ -41,7 +41,7 @@ app.set('view engine', 'ejs')
 
 const port = process.env.PORT || 3001
 
-app.use('/api/auth' || 'auth', auth)
+app.use('/api/auth' || '/auth', auth)
 app.use('/critics', critic)
 app.use('/allTime', allTime)
 app.use('/profile', profile)
