@@ -36,9 +36,11 @@ app.set('view engine', 'ejs')
 
 const port = process.env.PORT || 3001
 
-setInterval(() => {
-    axios.get("http://goatrelic.herokuapp.com");
-}, 300000); // every 5 minutes (300000)
+if (process.env.NODE_ENV == 'production') {
+    setInterval(() => {
+        axios.get("http://goatrelic.herokuapp.com");
+    }, 300000); // every 5 minutes (300000)
+}
 
 require('./routes/api/auth')(app);
 

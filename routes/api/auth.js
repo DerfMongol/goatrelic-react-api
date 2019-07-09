@@ -1,5 +1,7 @@
 const passport = require('passport')
 
+const config = require('../../config/keys')
+
 module.exports = app => {
     app.get('/auth/google', passport.authenticate('google', {
         scope: ['profile']
@@ -9,12 +11,10 @@ module.exports = app => {
         '/auth/google/redirect',
         passport.authenticate('google'),
         (req, res) => {
-            console.log(`redirect: ${req.user}`)
-
             if (req.get('Referrer')) {
                 res.redirect('back')
             } else {
-                res.redirect('http://goatrelic.herokuapp.com')
+                res.redirect(`http://${config.frontDomain}`)
             }
         })
 
@@ -22,12 +22,10 @@ module.exports = app => {
         '/api/auth/google/callback',
         passport.authenticate('google'),
         (req, res) => {
-            console.log(`redirect: ${req.user}`)
-
             if (req.get('Referrer')) {
                 res.redirect('back')
             } else {
-                res.redirect('http://goatrelic.herokuapp.com')
+                res.redirect(`http://${config.frontDomain}`)
             }
         
         }

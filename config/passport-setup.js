@@ -5,15 +5,11 @@ const User = require('../models/User')
 const Fans = require('../models/Fans')
 
 passport.serializeUser((user, done) => {
-    console.log(`serialize: ${user}`)
-
     done(null, user.id)
 })
 
 passport.deserializeUser((id, done) => {
-    console.log(`deserialize: ${id}`)
     User.findById(id).then((user) => {
-        console.log(`deserialize: ${user}`)
         done(null, user)
     })
 })
@@ -28,7 +24,6 @@ passport.use(
     }, (accessToken, refreshToken, profile, done) => {
         User.findOneAndUpdate({ googleId: profile.id }, {thumbnail: profile._json.picture}).then((currentUser) => {
             if (currentUser) {
-                console.log(`verify: ${currentUser}`)
                 done(null, currentUser)
             } else {
                 new User({

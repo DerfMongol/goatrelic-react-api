@@ -31,9 +31,7 @@ router.delete('/', (req, res) => {
                 res.send(err);
             else
                 User.findOne({googleId: req.body.id}).then((user) => {
-                    
                     user[req.body.sport.toLowerCase()] = []
-                    console.log(user)
                     user.save()
                 })
                 res.json({ id: doc._id, sport: req.body.sport.toLowerCase() });
