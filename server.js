@@ -34,7 +34,7 @@ app.use(passport.session())
 // Set up view engine
 app.set('view engine', 'ejs')
 
-
+console.log(keys)
 
 if (process.env.NODE_ENV == 'production') {
     setInterval(() => {
