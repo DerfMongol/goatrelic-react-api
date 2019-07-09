@@ -18,7 +18,8 @@ if (process.env.NODE_ENV == 'development') {
         session: {
             cookieKey: process.env.COOKIE_KEY
         },
-        frontDomain: 'goatrelic.herokuapp.com'
+        frontDomain: 'goatrelic.herokuapp.com',
+        port: process.env.PORT
     }
 
 }

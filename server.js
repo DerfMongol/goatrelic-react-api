@@ -34,7 +34,7 @@ app.use(passport.session())
 // Set up view engine
 app.set('view engine', 'ejs')
 
-const port = process.env.PORT || 3001
+
 
 if (process.env.NODE_ENV == 'production') {
     setInterval(() => {
@@ -57,4 +57,4 @@ app.get('/', (req, res) => {
     res.render('home', { user: req.user })
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(keys.port, () => console.log(`Example app listening on port ${keys.port}!`))
