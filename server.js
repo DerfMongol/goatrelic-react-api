@@ -57,4 +57,6 @@ app.get('/', (req, res) => {
     res.render('home', { user: req.user })
 })
 
-app.listen(keys.port, () => console.log(`Example app listening on port ${keys.port}!`))
+const port = process.env.PORT || 3001
+
+app.listen(port , () => console.log(`Example app listening on port ${port}!`))

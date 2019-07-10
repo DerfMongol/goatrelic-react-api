@@ -14,7 +14,7 @@ module.exports = app => {
             if (req.get('Referrer')) {
                 res.redirect('back')
             } else {
-                res.redirect(`http://${config.frontDomain}`)
+                res.redirect(`http://${process.env.SSR_URL}`)
             }
         })
 
@@ -25,7 +25,7 @@ module.exports = app => {
             if (req.get('Referrer')) {
                 res.redirect('back')
             } else {
-                res.redirect(`http://${config.frontDomain}`)
+                res.redirect(`http://${process.env.SSR_URL}`)
             }
         
         }
