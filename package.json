@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "NODE_ENV=development SSR_URL=localhost:3000 nodemon server.js",
-    "start": "NODE_ENV=production SSR_URL=goatrelic.herokuapp.com node server.js"
+    "start": "NODE_ENV=production SSR_URL=goatrelic.com node server.js"
   },
   "author": "",
   "license": "ISC",
